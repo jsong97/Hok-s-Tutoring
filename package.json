@@ -1,16 +1,33 @@
 {
-  "name": "tutorial-app",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
-    "react-scripts": "1.1.4"
-  },
+  "name": "reactexpress",
+  "version": "1.0.0",
+  "description": "Boilerplate for React and Express",
+  "main": "server.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "client-install": "cd client && npm install",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \" npm run server\" \"npm run client\""
+  },
+  "author": "Justin Song",
+  "license": "MIT",
+  "dependencies": {
+    "concurrently": "^3.6.0",
+    "express": "^4.16.3",
+    "gulp": "^3.9.1",
+    "gulp-changed": "^3.2.0",
+    "gulp-clean-css": "^3.9.4",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.1",
+    "gulp-uglify": "^3.0.0",
+    "lodash": "^4.17.10",
+    "prop-types": "^15.6.2",
+    "react-fontawesome": "^1.6.1",
+    "react-jss": "^8.6.1",
+    "react-responsive-modal": "^3.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.3"
   }
 }
