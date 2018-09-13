@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import Modal from 'react-responsive-modal';
+
+import playButton from '../../../Assets/playButton.png';
 import './custom_animation.css';
+
 
 export default class CustomAnimation extends React.Component {
   state = {
@@ -18,11 +21,14 @@ export default class CustomAnimation extends React.Component {
   render() {
     const { open } = this.state;
     return (
-      <div className="example">
-        <h4>Custom animation</h4>
-        <button className="btn btn-action" onClick={this.onOpenModal}>
-          Open
-        </button>{' '}
+      <div className="video">
+        <div className="videoName">
+          <p>Inclined Planes, Q11</p>
+        </div>
+        <div className="videoPlayer">
+          <img src="http://i.ytimg.com/vi/o9ysmUIMUaE/maxresdefault.jpg" width="356" height="200"/>
+          <img className="playButton" src={playButton} alt="playButton" height="54.6" width="81.9" onClick={this.onOpenModal}/>{' '}
+        </div>
         <Modal
           open={open}
           onClose={this.onCloseModal}
@@ -35,11 +41,8 @@ export default class CustomAnimation extends React.Component {
           }}
           animationDuration={1000}
         >
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-            pulvinar risus non risus hendrerit venenatis. Pellentesque sit amet
-            hendrerit risus, sed porttitor quam.
-          </p>
+          <div className="closeButton"/>
+          <iframe width="784" height="441" src="https://www.youtube.com/embed/vhLyoyqlons" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen alt="Inclined Planes Q118"></iframe>
         </Modal>
       </div>
     );

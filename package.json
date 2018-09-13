@@ -22,10 +22,15 @@
     "gulp-sass": "^4.0.1",
     "gulp-uglify": "^3.0.0",
     "lodash": "^4.17.10",
+    "popmotion": "^8.3.8",
     "prop-types": "^15.6.2",
+    "react-addons-create-fragment": "^15.6.2",
+    "react-anime": "^2.1.0",
     "react-fontawesome": "^1.6.1",
     "react-jss": "^8.6.1",
-    "react-responsive-modal": "^3.3.0"
+    "react-pose": "^3.3.0",
+    "react-responsive-modal": "^3.3.0",
+    "styled-components": "^3.4.6"
   },
   "devDependencies": {
     "nodemon": "^1.18.3"

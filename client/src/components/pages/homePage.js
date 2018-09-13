@@ -1,12 +1,85 @@
 import React, { Component } from 'react';
+import posed from "react-pose";
+import { render} from "react-dom";
+import styled from "styled-components";
+import { tween } from "popmotion";
+import Anime from 'react-anime';
+
 
 import Customers from './customers/customers';
 import Reviews from './reviews/reviews';
 import Slider from './reviews/slider';
 import Queries from './queries';
-
+import Game from './tileGame/game';
 // we don't need this because we're going to include this in App
 // import './Assets/css/default.min.css';
+
+const Container = styled.div`
+  margin: 0 auto;
+  width: 80%;
+  margin-top: 2em;
+  padding: 2em;
+  margin-bottom: 3em;
+
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-gap: 0.5em;
+  /* grid-auto-rows: 20em; */
+  grid-auto-rows: minmax(8em, auto);
+`;
+
+const Square = posed.div({
+  idle: {
+    scale: 1,
+    opacity: 0.7,
+    transition: props => tween({ ...props, duration: 2000 })
+  },
+  hovered: {
+    scale: 1.1,
+    opacity: 1.2,
+    transition: props => tween({ ...props, duration: 1000 })
+  }
+});
+
+const StyledSquareOne = styled(Square)`
+  grid-column: 1/2;
+  grid-row: 2/3;
+  background-color: $black;
+  color: $white;
+  border: 2px solid black;
+  padding: 10px;
+  margin: 0 auto;
+  width: 50%;
+  height: 80%;
+  text-align: center;
+`;
+
+const StyledSquareTwo = styled(Square)`
+  grid-column: 2/3;
+  grid-row: 2/3;
+  background-color: $black;
+  color: $white;
+  border: 2px solid black;
+  padding: 10px;
+  margin: 0 auto;
+  width: 50%;
+  height: 80%;
+  text-align: center;
+`;
+
+const StyledSquareThree = styled(Square)`
+  grid-column: 3/4;
+  grid-row: 2/3;
+  background-color: $black;
+  color: $white;
+  border: 2px solid black;
+  padding: 10px;
+  margin: 0 auto;
+  width: 50%;
+  height: 80%;
+  text-align: center;
+`;
 
 class HomePage extends Component {
 
@@ -15,7 +88,10 @@ class HomePage extends Component {
     this.state= {
       isMethodsModalOpen: false,
       isSpeshModalOpen: false,
-      isUniModalOpen: false
+      isUniModalOpen: false,
+      hovering1: false,
+      hovering2: false,
+      hovering3: false
     }
   }
 
@@ -29,41 +105,42 @@ class HomePage extends Component {
               <h1>Supercharge your Math Studies with Hoks Tutoring!</h1>
             </div>
           </div>
+        </div>
 
-          <div className="registerForm">
-            <div className="basicInfo">
-              <form method="POST" action="/">
-                <div className="topLine">
-                  <div id="form-group">
-                    <input class="form-control" name="name" type="text" placeholder="Enter your name"/>
-                  </div>
-                  <div id="form-group">
-                    <input class="form-control" name="username" type="text" placeholder="Enter your address"/>
-                  </div>
-                  <div id="form-group">
-                    <input class="form-control" name="yearLevel" type="text" placeholder="Enter your year level"/>
-                  </div>
-                </div>
-                <div className="secondLine">
-                  <div>
-                  </div>
-                  <div id="form-group">
-                    <input class="form-control" name="email" type="text" placeholder="Enter your email"/>
-                  </div>
-                  <div id="form-group">
-                    <input class="form-control" name="phoneNo" type="text" placeholder="Enter your phone no"/>
-                  </div>
-                </div>
-                <div className="thirdLine">
-                  <div>
-                  </div>
-                  <input class="btn btn-primary" id="login-button" type="submit" value="Submit Enquiry"/>
-                </div>
-              </form>
-            </div>
-          </div>
+        <div className="funBlock">
+          <Game />
+        </div>
+
+        <div className="topicBlock">
+          <Container>
+            <h1> Topics </h1>
+            <StyledSquareOne
+              pose={this.state.hovering1 ? "hovered" : "idle"}
+              onMouseEnter={() => this.setState({ hovering1: true })}
+              onMouseLeave={() => this.setState({ hovering1: false })}
+            >
+              <h2>Math<br/>Methods</h2>
+            </StyledSquareOne>
+
+            <StyledSquareTwo
+              pose={this.state.hovering2 ? "hovered" : "idle"}
+              onMouseEnter={() => this.setState({ hovering2: true })}
+              onMouseLeave={() => this.setState({ hovering2: false })}
+            >
+              <h2>Specialist Maths</h2>
+            </StyledSquareTwo>
 
 
+            <StyledSquareThree
+              pose={this.state.hovering3 ? "hovered" : "idle"}
+              onMouseEnter={() => this.setState({ hovering3: true })}
+              onMouseLeave={() => this.setState({ hovering3: false })}
+            >
+              <h2>University Studies</h2>
+            </StyledSquareThree>
+
+
+          </Container>
         </div>
 
         <div className="contentPage">
@@ -83,22 +160,7 @@ class HomePage extends Component {
           </div>
         </div>
 
-        <div className="topicBlock">
-          <div className="topics">
-            <h1> Topics </h1>
 
-            <div className="topicModal1 topicModal">
-              <h2>Math <br/> Methods</h2>
-            </div>
-
-            <div className="topicModal2 topicModal">
-              <h2>Specialist Maths</h2>
-            </div>
-            <div className="topicModal3 topicModal">
-              <h2>University Studies</h2>
-            </div>
-          </div>
-        </div>
 
         <Slider />
 
