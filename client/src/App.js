@@ -19,6 +19,8 @@ import Blog from './components/pages/blog';
 import './Assets/css/default.min.css';
 
 class App extends Component {
+
+
   render() {
     return (
       <Router>

@@ -5,10 +5,18 @@ import playButton from '../../../Assets/playButton.png';
 import './custom_animation.css';
 
 
-export default class CustomAnimation extends React.Component {
-  state = {
-    open: false,
-  };
+export default class videoModal extends React.Component {
+
+  constructor(props) {
+      super(props);
+      this.state = {
+          open: false
+      };
+  }
+
+  // onChangeSrc() {
+  //   this.props.changeSrc(this.state.)
+  // }
 
   onOpenModal = () => {
     this.setState({ open: true });
@@ -23,10 +31,10 @@ export default class CustomAnimation extends React.Component {
     return (
       <div className="video">
         <div className="videoName">
-          <p>Inclined Planes, Q11</p>
+          <p>{this.props.title}</p>
         </div>
         <div className="videoPlayer">
-          <img src="http://i.ytimg.com/vi/o9ysmUIMUaE/maxresdefault.jpg" width="356" height="200"/>
+          <img src={this.props.imgSrc} width="356" height="200"/>
           <img className="playButton" src={playButton} alt="playButton" height="54.6" width="81.9" onClick={this.onOpenModal}/>{' '}
         </div>
         <Modal
@@ -42,7 +50,7 @@ export default class CustomAnimation extends React.Component {
           animationDuration={1000}
         >
           <div className="closeButton"/>
-          <iframe width="784" height="441" src="https://www.youtube.com/embed/vhLyoyqlons" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen alt="Inclined Planes Q118"></iframe>
+          <iframe width="784" height="441" src={this.props.vidSrc} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen alt="Inclined Planes Q118"></iframe>
         </Modal>
       </div>
     );

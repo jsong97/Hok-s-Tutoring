@@ -1,6 +1,15 @@
 const express = require('express');
 
 const app = express();
+const path = require('path');
+const bodyParser = require('body-parser');
+const expressValidator = require('express-validator');
+const session = require('express-session');
+
+const config = require('./config/database');
+var mongoose = require('mongoose');
+
+let db = mongoose.connection;
 
 // get customers API
 app.get('/api/customers', (req, res) => {

@@ -430,8 +430,17 @@ footer {
 }
 
 
-.componentTitle {
+.container {
+  align-items: center;
   text-align: center;
+}
+
+.componentTitle {
+  display: inline-block;
+  margin-bottom: 1.5em;
+  text-align: center;
+  border-bottom: 5px solid $blue;
+  width: 85%;
 }
 
 // Video Page
@@ -440,11 +449,11 @@ footer {
 }
 .videoContainer {
   width: 85%;
-  left: 6em;
+  left: 5.1em;
   position: relative;
   margin-bottom: 2em;
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 1fr;
   grid-template-rows: auto;
   grid-gap: 0.5em;
   /* grid-auto-rows: 20em; */
@@ -467,12 +476,11 @@ footer {
       background-color: $trueWhite;
 
       .videoName{
-        border: 2px solid black;
+        border-bottom: 2px solid $hokBlue;
         margin: 0.5em 0.2em 0.5em 0.2em;
       }
 
       .videoPlayer {
-        border: 2px solid black;
         padding: 0.5em -0.1em 0.5em -0.1em;
         position: relative;
         display: inline-block;
@@ -495,7 +503,7 @@ footer {
   }
 
   .videoNavigation {
-    border: 2px solid red;
+    border-left: 2px solid $yellow;
   }
 
 }
