@@ -6,9 +6,11 @@ import React, { Component } from 'react';
 class Blog extends Component {
   render() {
     return (
-      <div className="container-fluid">
+      <div className="container">
         <div className="componentTitle">
           <h1> Blog </h1>
+          <p> Some of my thoughts on some of the toughest roadblocks that students face learning Math! </p>
+          <div id="borderLeft"></div>
         </div>
 
         <div className="content">

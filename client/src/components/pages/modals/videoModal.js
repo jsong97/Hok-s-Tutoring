@@ -10,13 +10,9 @@ export default class videoModal extends React.Component {
   constructor(props) {
       super(props);
       this.state = {
-          open: false
+          open: false,
       };
   }
-
-  // onChangeSrc() {
-  //   this.props.changeSrc(this.state.)
-  // }
 
   onOpenModal = () => {
     this.setState({ open: true });
@@ -28,10 +24,21 @@ export default class videoModal extends React.Component {
 
   render() {
     const { open } = this.state;
+    const checkChapter = this.props.vidChs;
+    let isChapter = true;
+    if (checkChapter === "0"){
+      isChapter = false;
+    }
+
     return (
       <div className="video">
         <div className="videoName">
-          <p>{this.props.title}</p>
+          <div className="videoTitle">
+            <p>{this.props.title}</p>
+          </div>
+          <div className="videoQuestion">
+            <p> {isChapter ? this.props.vidChs + ', ' + this.props.vidQs : "Conceptual" } </p>
+          </div>
         </div>
         <div className="videoPlayer">
           <img src={this.props.imgSrc} width="356" height="200"/>

@@ -7,9 +7,11 @@ import Badass from '../../Assets/hokBadass.jpg';
 class AboutMe extends Component {
   render() {
     return (
-      <div className="container-fluid">
+      <div className="container">
         <div className="componentTitle">
           <h1> About Me </h1>
+          <p> Just a small introduction about who I am and why I decided to teach Math :)! </p>
+          <div id="borderLeft"></div>
         </div>
 
         <div className="content">

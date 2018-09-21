@@ -6,9 +6,11 @@ import React, { Component } from 'react';
 class Contact extends Component {
   render() {
     return (
-      <div className="container-fluid">
+      <div className="container">
         <div className="componentTitle">
           <h1> Contact </h1>
+          <p> I check my Email every morning and I always try to reply to all of them! </p>
+          <div id="borderLeft"></div>
         </div>
 
         <div className="content">

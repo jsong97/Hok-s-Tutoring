@@ -459,6 +459,18 @@ footer {
   /* grid-auto-rows: 20em; */
   grid-auto-rows: minmax(10em, auto);
 
+  .searchVideos {
+    position: relative;
+    left: 12.2em;
+    border: 1px solid black;
+    border-bottom: 3px solid black;
+    width: 600px;
+    font-size: 1em;
+    outline: none;
+    color: #606060;
+    margin-bottom: 1em;
+  }
+
   .videoGallery {
 
     display: grid;
@@ -478,6 +490,15 @@ footer {
       .videoName{
         border-bottom: 2px solid $hokBlue;
         margin: 0.5em 0.2em 0.5em 0.2em;
+
+        .videoTitle {
+
+        }
+        .videoQuestion {
+          margin-top: -0.4em;
+          font-size: 0.8em;
+          font-weight: bold;
+        }
       }
 
       .videoPlayer {
@@ -505,7 +526,10 @@ footer {
   .videoNavigation {
     border-left: 2px solid $yellow;
   }
+}
 
+.videoList {
+  list-style-type: none;
 }
 
 .closeButton {

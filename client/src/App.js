@@ -14,13 +14,24 @@ import Videos from './components/pages/videos';
 import Contact from './components/pages/contact';
 import AboutMe from './components/pages/aboutMe';
 import Blog from './components/pages/blog';
+import AddVideo from './components/pages/addVideo';
 
 // includes
 import './Assets/css/default.min.css';
 
+fetch('https://localhost:3000/addVideo', {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    firstParam: 'yourValue',
+    secondParam: 'yourOtherValue',
+  })
+})
+
 class App extends Component {
-
-
   render() {
     return (
       <Router>
@@ -33,6 +44,7 @@ class App extends Component {
             <Route exact path='/Blog' component={Blog} />
             <Route exact path='/AboutMe' component={AboutMe} />
             <Route exact path='/Contact' component={Contact} />
+            <Route exact path='/AddVideo' component={AddVideo} />
 
           <Footer />
 

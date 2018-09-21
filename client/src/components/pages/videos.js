@@ -6,17 +6,32 @@ import VideoModal from './modals/videoModal';
 // import './Assets/css/default.min.css';
 
 class Videos extends Component {
+  constructor(){
+    super();
+    this.state = {
+      videos: [],
+      search: ''
+    }
+  }
+
+  // use this to fetch routes in the backend
+  componentDidMount() {
+    fetch('/api/video')
+      .then(res => res.json())
+      .then(videos => this.setState({videos}, () => console.log('Videos fetched..',
+      videos)));
+  }
+
+  updateSearch(event) {
+    this.setState({search: event.target.value.substr(0, 20)});
+  }
 
   render() {
-
-    const firstTitle = "Inclined Planes, Q15";
-    const firstImg = "http://i.ytimg.com/vi/cbHAO7iTifI/maxresdefault.jpg";
-    const firstVid = "https://www.youtube.com/embed/cbHAO7iTifI";
-
-    const secondTitle = "Inclined Planes, Q18";
-    const secondImg = "http://i.ytimg.com/vi/o9ysmUIMUaE/maxresdefault.jpg";
-    const secondVid = "https://www.youtube.com/embed/vhLyoyqlons";
-
+    let filteredVideos = this.state.videos.filter(
+      (video) => {
+        return (video.name.indexOf(this.state.search) !== -1);
+      }
+    );
     return (
       <div className="container">
         <div className="componentTitle">
@@ -26,18 +41,15 @@ class Videos extends Component {
         </div>
 
         <div className="videoContainer">
+          <input className="searchVideos" type="text" value={this.state.search}
+          onChange={this.updateSearch.bind(this)}/>
           <div className="videoGallery">
 
-            <VideoModal
-              title={firstTitle}
-              imgSrc={firstImg}
-              vidSrc={firstVid}
-            />
-            <VideoModal
-              title={secondTitle}
-              imgSrc={secondImg}
-              vidSrc={secondVid}
-            />
+            {filteredVideos.map(video =>
+              <li className="videoList" key={video.id}> <VideoModal
+              title={video.name} imgSrc={video.picture} vidSrc={video.link}
+              vidChs={video.chapter} vidQs={video.question}/></li>
+            )}
 
           </div>
         </div>
@@ -47,3 +59,26 @@ class Videos extends Component {
 }
 
 export default Videos;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/////
