@@ -3,7 +3,8 @@ import posed from "react-pose";
 import { render} from "react-dom";
 import styled from "styled-components";
 import { tween } from "popmotion";
-import Anime from 'react-anime';
+import {withGoogleMap, GoogleMap, Marker} from 'react-google-maps';
+import { Redirect } from 'react-router-dom';
 
 
 import Customers from './customers/customers';
@@ -11,6 +12,8 @@ import Reviews from './reviews/reviews';
 import Slider from './reviews/slider';
 import Queries from './queries';
 import Game from './tileGame/game';
+import Map from './myMap';
+import HomeVideoModal from './modals/homeVideoModal';
 // we don't need this because we're going to include this in App
 // import './Assets/css/default.min.css';
 
@@ -29,142 +32,163 @@ const Container = styled.div`
   grid-auto-rows: minmax(8em, auto);
 `;
 
-const Square = posed.div({
-  idle: {
-    scale: 1,
-    opacity: 0.7,
-    transition: props => tween({ ...props, duration: 2000 })
-  },
-  hovered: {
-    scale: 1.1,
-    opacity: 1.2,
-    transition: props => tween({ ...props, duration: 1000 })
-  }
-});
-
-const StyledSquareOne = styled(Square)`
-  grid-column: 1/2;
-  grid-row: 2/3;
-  background-color: $black;
-  color: $white;
-  border: 2px solid black;
-  padding: 10px;
-  margin: 0 auto;
-  width: 50%;
-  height: 80%;
-  text-align: center;
-`;
-
-const StyledSquareTwo = styled(Square)`
-  grid-column: 2/3;
-  grid-row: 2/3;
-  background-color: $black;
-  color: $white;
-  border: 2px solid black;
-  padding: 10px;
-  margin: 0 auto;
-  width: 50%;
-  height: 80%;
-  text-align: center;
-`;
-
-const StyledSquareThree = styled(Square)`
-  grid-column: 3/4;
-  grid-row: 2/3;
-  background-color: $black;
-  color: $white;
-  border: 2px solid black;
-  padding: 10px;
-  margin: 0 auto;
-  width: 50%;
-  height: 80%;
-  text-align: center;
-`;
-
 class HomePage extends Component {
 
   constructor(props) {
     super(props)
     this.state= {
-      isMethodsModalOpen: false,
-      isSpeshModalOpen: false,
-      isUniModalOpen: false,
       hovering1: false,
       hovering2: false,
-      hovering3: false
+      hovering3: false,
+      redirect1: false,
+      redirect2: false,
+      redirect3: false
+    }
+  }
+
+  setRedirectOne = () => {
+    this.setState({
+      redirect1: true
+    })
+  }
+
+  setRedirectTwo = () => {
+    this.setState({
+      redirect2: true
+    })
+  }
+
+  setRedirectThree = () => {
+    this.setState({
+      redirect3: true
+    })
+  }
+
+  renderRedirectOne = () => {
+    if (this.state.redirect1) {
+      return <Redirect to='/MathMethods' />
+    }
+  }
+
+  renderRedirectTwo = () => {
+    if (this.state.redirect2) {
+      return <Redirect to='/SpecialistMaths' />
+    }
+  }
+
+  renderRedirectThree = () => {
+    if (this.state.redirect3) {
+      return <Redirect to='/UniversityMaths' />
     }
   }
 
   render() {
     return (
-      <div className="container">
+      <div className="container-fluid">
         <div className="homePage">
 
           <div className="titleBox">
             <div className="title">
-              <h1>Supercharge your Math Studies with Hoks Tutoring!</h1>
+              <div className="titleIntro">
+                <h1>Hi Guys!</h1>
+              </div>
+              <div className="titleDesc">
+                <div className="topDesc">
+                  <h2> I'm <span>Hok</span> and I tutor Specialist's Maths, Math Methods,
+                  and University level maths!</h2>
+                  <div className="contentPage">
+                    <div className="introduction">
+                      <div className="videoPlayer">
+                        <HomeVideoModal imgSrc="http://i.ytimg.com/vi/Cjin35nhXJo/maxresdefault.jpg" vidSrc="https://www.youtube.com/embed/x78Ay6Kvb3k"/>
+                      </div>
+                      <div className="textIntro">
+                        <p> I started my freelance tutoring business back in 2016 because I discovered that I loved teaching, and I wanted to share my tips and tricks on how to get straight As in all your Math subjects!</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <h2 className="titleOffer"> What I Offer </h2>
+                <div className="offerings">
+                  <div className="private">
+                    <div className="classTitle">
+                      <p>Private Classes</p>
+                    </div>
+                    <div className="classOffer">
+                      <p>Homework Help</p>
+                      <p>Individualized Curriculum</p>
+                      <p>2 or 3 Sessions Per Week</p>
+                      <p>Worksheets, assignments, and solution keys are provided to help you learn best</p>
+                    </div>
+                    <div className="signUpButton">
+                      <a href="/signUp">Ready to get started?</a>
+                    </div>
+                  </div>
+                  <div className="group">
+                    <div className="classTitle">
+                      <p>Group Classes</p>
+                    </div>
+                    <div className="classOffer">
+                      <p>Conceptual Topics</p>
+                      <p>Make Friends!</p>
+                      <p>2 or 3 Sessions Per Week</p>
+                      <p>Worksheets, assignments, and solution keys are provided to help you learn best</p>
+                    </div>
+                    <div className="signUpButton">
+                      <a href="/signUp">Ready to get started?</a>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+        </div>
+
+        <div className="newsLetter">
+        <div class="login-page">
+          <div class="form">
+            <form class="register-form">
+              <p class="newsLetterMessage">Want to get <br/><span> AWESOME FREEBIES? </span> </p>
+              <input type="text" placeholder="Email"/>
+              <button>sign up for my newsletter</button>
+            </form>
+          </div>
+        </div>
+        </div>
+
+        <div className = "mapBlock">
+          <h2>I tutor in the <span>CBD</span> and in <span>Springvale</span></h2>
+          <Map
+            containerElemenet={<div style={{height:100+'%'}} />}
+            mapElement={<div style={{height:100+'%'}} />} />
         </div>
 
         <div className="funBlock">
-          <Game />
         </div>
 
         <div className="topicBlock">
+          <h1> Topics </h1>
           <Container>
-            <h1> Topics </h1>
-            <StyledSquareOne
-              pose={this.state.hovering1 ? "hovered" : "idle"}
-              onMouseEnter={() => this.setState({ hovering1: true })}
-              onMouseLeave={() => this.setState({ hovering1: false })}
-            >
-              <h2>Math<br/>Methods</h2>
-            </StyledSquareOne>
+            <div className="styledSquare one" onClick={this.setRedirectOne}>
+              {this.renderRedirectOne()}
+              <p>Math<br/>Methods</p>
+            </div>
 
-            <StyledSquareTwo
-              pose={this.state.hovering2 ? "hovered" : "idle"}
-              onMouseEnter={() => this.setState({ hovering2: true })}
-              onMouseLeave={() => this.setState({ hovering2: false })}
-            >
-              <h2>Specialist Maths</h2>
-            </StyledSquareTwo>
+            <div className="styledSquare two" onClick={this.setRedirectTwo}>
+              {this.renderRedirectTwo()}
+              <p>Specialist<br/>Maths</p>
+            </div>
 
-
-            <StyledSquareThree
-              pose={this.state.hovering3 ? "hovered" : "idle"}
-              onMouseEnter={() => this.setState({ hovering3: true })}
-              onMouseLeave={() => this.setState({ hovering3: false })}
-            >
-              <h2>University Studies</h2>
-            </StyledSquareThree>
-
-
+            <div className="styledSquare three" onClick={this.setRedirectThree}>
+              {this.renderRedirectThree()}
+              <p>University<br/>Studies</p>
+            </div>
           </Container>
-        </div>
-
-        <div className="contentPage">
-          <div className="title">
-            <h3> Browse our resources to discover detailed videos on how to solve all VCE Math topics! </h3>
-          </div>
-          <div className="introduction">
-            <div className="videoPlayer">
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/rwSonuLi46k" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-            </div>
-            <div className="textIntro">
-              <div className="introTitle">
-                <p> Hi everybody! I'm Hok! </p>
-              </div>
-              <p> Thanks for visiting the website :). <br /><br /> I started my freelance tutoring business back in 2016 because I discovered that I loved teaching, and I wanted to share my tips and tricks on how to get straight A's in all your Math subjects!</p>
-            </div>
-          </div>
         </div>
 
 
 
         <Slider />
-
-        <Queries />
       </div>
     );
   }

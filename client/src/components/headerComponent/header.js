@@ -14,7 +14,7 @@ class Header extends Component {
       <header>
         <div className="logo">
           <Link to="/">
-            <img src={logo} alt="tutoringLogo" height="42" width="42"/>
+            <img src={logo} alt="tutoringLogo" height="63" width="63"/>
           </Link>
         </div>
         <nav>

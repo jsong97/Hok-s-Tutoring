@@ -15,6 +15,10 @@ import Contact from './components/pages/contact';
 import AboutMe from './components/pages/aboutMe';
 import Blog from './components/pages/blog';
 import AddVideo from './components/pages/addVideo';
+import MathMethods from './components/pages/methods';
+import Specialist from './components/pages/specialist';
+import University from './components/pages/university';
+import SignUp from './components/pages/signUp';
 
 // includes
 import './Assets/css/default.min.css';
@@ -45,6 +49,10 @@ class App extends Component {
             <Route exact path='/AboutMe' component={AboutMe} />
             <Route exact path='/Contact' component={Contact} />
             <Route exact path='/AddVideo' component={AddVideo} />
+            <Route exact path='/MathMethods' component={MathMethods} />
+            <Route exact path='/SpecialistMaths' component={Specialist} />
+            <Route exact path='/UniversityMaths' component={University} />
+            <Route exact path='/Signup' component={SignUp} />
 
           <Footer />
 

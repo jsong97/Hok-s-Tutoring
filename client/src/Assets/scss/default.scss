@@ -1,4 +1,7 @@
 @import "_config.scss";
+@import url('https://fonts.googleapis.com/css?family=Sniglet');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
 
 body {
   margin: 0;
@@ -63,18 +66,13 @@ header{
 }
 
 // HomePage CSS page
+
 .homePage {
   display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-columns: 0.5fr 3fr 0.5fr;
   grid-template-rows: auto;
   /* grid-auto-rows: 20em; */
   grid-auto-rows: minmax(5em, auto);
-  // border: solid 2px black;
-
-  .gridbox {
-    // border: solid 2px green;
-  }
-
 
   .titleBox {
     grid-column: 2/3;
@@ -83,7 +81,93 @@ header{
 
   .title {
     text-align: center;
+    line-height: 1.5em;
+
+    .titleDesc {
+      .topDesc {
+        h2 {
+          border-bottom: 2px solid $hokBlue;
+          padding-bottom: 1em;
+        }
+
+        // this is the stored content for the homePage
+        .contentPage {
+          background-color: #f8f7f2;
+          display: inline-block;
+          margin: 0 0 3em 0;
+          padding: 0 1em 0 1em;
+          border-bottom: solid 2px black;
+
+          .title {
+            text-align: center;
+          }
+          .introduction {
+            .videoPlayer {
+              padding-top: 1em;
+            }
+            .textIntro {
+              .introTitle {
+                font-size: 30px;
+              }
+            }
+          }
+        }
+      }
+      .titleOffer {
+        margin-top: -0.2em;
+      }
+
+      .offerings {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        grid-gap: 0.5em;
+        /* grid-auto-rows: 20em; */
+        grid-auto-rows: minmax(20em, auto);
+        background-color: #f8f7f2;
+
+        .private, .group {
+          text-align: center;
+          border: 2px solid #fcfcfc;
+          box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
+          background-color: $trueWhite;
+          border-bottom: 3px solid $yellow;
+
+          .classTitle {
+            background-color: $mainBlue;
+            padding: 0.1em 0 0.1em 0;
+            border-bottom: 5px solid $trueWhite;
+            font-size: 1.2em;
+            color: $trueWhite;
+          }
+
+          .classOffer {
+            border: 2px solid $hokBlue;
+            padding: 0 0.5em 0 0.5em;
+            background-color: $hokBlue;
+          }
+
+          .signUpButton {
+            display: inline-block;
+            font-weight: 600;
+            padding: 1.5em 1.5em;
+            text-align: center;
+            a {
+              color: $hokBlack;
+              border-radius: 2px;
+              border: 2px solid $mainBlue;
+              padding: 0.5em 0.5em;
+            }
+          }
+        }
+      }
+      span {
+        color: $hokOrange;
+      }
+    }
   }
+
+
 
   .registerForm {
     grid-column: 2/3;
@@ -151,49 +235,25 @@ header{
       width: 100%;
     }
   }
-
 }
 
-// this is the stored content for the homePage
-.contentPage {
-  background-color: #f8f7f2;
-  display: grid;
-  grid-template-columns: 0.5fr 3fr 0.5fr;
-  grid-template-rows: auto;
-  grid-gap: 0.5em;
-  margin: 2em 0 3em 0;
-  padding: 0 1em 2em 1em;
-  /* grid-auto-rows: 20em; */
-  grid-auto-rows: minmax(7em, auto);
-  // border: solid 2px black;
+// Google Maps API key
+// AIzaSyCpBCt4K67pgqCklpIob4OGGVJa-uEFt3s
 
-  .title {
-    text-align: center;
-    grid-column: 2/3;
-    grid-row: 1/2;
-  }
-
-  .introduction {
-    grid-column: 2/3;
-    grid-row: 2/3;
-
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-
-    background-color: $alternateWhite;
-
-    .textIntro {
-      .introTitle {
-        font-size: 30px;
-      }
-    }
+.mapBlock {
+  span {
+    color: $purple;
   }
 }
 
 .topicBlock {
   h1 {
-    border-bottom: solid 20px $purple;
-    padding-bottom: 0.5em;
+    border-bottom: solid 20px $hokBlue;
+    width: 30%;
+    position: relative;
+    left: 12em;
+    padding: 2em 0 0.5em 0;
+    text-align: center;
   }
 
   .topicModal {
@@ -304,7 +364,7 @@ header{
     margin:calc(50vh - 220px) auto;padding:20px 30px;
     max-width:calc(100vw - 40px);
     box-sizing:border-box;
-    font-family:'Montserrat',sans-serif;
+    font-family:'Montserra',sans-serif;
     position:relative;
   }
 
@@ -443,6 +503,143 @@ footer {
   width: 85%;
 }
 
+// newsLetter
+.newsLetter {
+  margin-top: 4em;
+}
+
+.form .newsLetterMessage {
+  color: #b3b3b3;
+  margin-top: -1em;
+}
+
+.form .newsLetterMessage a, span {
+  color: #4CAF50;
+  text-decoration: none;
+}
+
+// Topic Squares
+.square {
+  height: 1em;
+  width: 1em;
+  opacity: 0.7;
+  transition: width 2s, height 2s;
+}
+
+.square:hover{
+  height: 2em;
+  width: 2em;
+  opacity: 1.2;
+}
+
+.styledSquare{
+  opacity: 0.7;
+  border: 2px solid black;
+  padding: 10px;
+  margin: 0 auto;
+  width: 50%;
+  height: 70%;
+  text-align: center;
+  cursor: pointer;
+  font-size: 30px;
+  transition:all 1s ease;
+  font-weight: bold;
+  line-height: 1.05em;
+
+  p {
+    position: relative;
+    top: -0.35em;
+  }
+}
+
+.one {
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
+
+.one:hover{
+  background:$mainBlue;
+  color: $white;
+  -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        transform: scale(1.1);
+  opacity: 1.2;
+}
+
+.two {
+  grid-column: 2/3;
+  grid-row: 2/3;
+}
+
+.two:hover{
+  background:$hokOrange;
+  color: $white;
+  -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        transform: scale(1.1);
+  opacity: 1.2;
+}
+
+.three {
+  grid-column: 3/4;
+  grid-row: 2/3;
+}
+
+.three:hover{
+  background:$purple;
+  color: $white;
+  -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        transform: scale(1.1);
+  opacity: 1.2;
+}
+
+
+// Home Videos
+.homeVideo {
+  text-align: center;
+  border: 2px solid #fcfcfc;
+  box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
+  background-color: $trueWhite;
+  color: $hokGreen;
+
+  .homeVideoName{
+
+    .homeVideoTitle {
+
+    }
+    .homeVideoQuestion {
+      font-size: 1.6em;
+      font-weight: bold;
+      margin-bottom: -0.3em;
+      width: 50%;
+      position: relative;
+      left: 7.6em;
+      border-bottom: 5px solid black;
+    }
+  }
+
+  .homeVideoPlayer {
+    position: relative;
+    display: inline-block;
+    margin: 30px;
+    border-bottom: 4px solid $hokOrange;
+
+    .playButton {
+      position:absolute;
+      top: 50%;
+      left: 50%;
+      cursor: pointer;
+      transform: translate(-50%, -50%);
+      -webkit-transform: translate(-50%, -50%);
+    }
+
+    .playButton:hover:before {
+      padding: 15px;
+    }
+  }
+}
+
 // Video Page
 .container-fluid {
   text-align: center;
@@ -559,9 +756,63 @@ footer {
 
 }
 
+// Sign Up
+
+.login-page {
+  width: 360px;
+  padding-bottom: 3em;
+  margin: auto;
+}
+.form {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 360px;
+  margin: 0 auto;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.form input {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+.form button {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #4CAF50;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+.form button:hover,.form button:active,.form button:focus {
+  background: #43A047;
+}
+.form .message {
+  margin: 15px 0 0;
+  color: #b3b3b3;
+  font-size: 12px;
+}
+.form .message a, span {
+  color: #4CAF50;
+  text-decoration: none;
+}
 
 // Game Board
-
 .funBlock {
   align-items: center;
   text-align: center;
